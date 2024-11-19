@@ -16,6 +16,6 @@ jobs:
         uses: pascalgn/automerge-action@v0.16.4
         with:
           github_token: "${{ secrets.GITHUB_TOKEN }}"
-          merge_method: "squash" # ou "merge", "rebase"
+          merge_method: "merge"
           # Optionnel : définir des labels spécifiques
           # label: "automerge"
