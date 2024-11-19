@@ -33,16 +33,6 @@ jobs:
           cd WebServer/backend
           npm ci
 
-      - name: Build backend
-        run: |
-          cd WebServer/backend
-          npm run build
-
-      #- name: Test backend
-      #  run: |
-      #    cd backend
-      #    npm test
-
       - name: Install frontend dependencies
         run: |
           cd WebServer/frontend
