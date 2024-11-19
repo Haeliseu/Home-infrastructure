@@ -1,5 +1,5 @@
 # Utilisation de l'image Node pour construire l'application Express
-FROM node:18-alpine AS build
+FROM node:23-alpine AS build
 
 # Définir le répertoire de travail
 WORKDIR /app
