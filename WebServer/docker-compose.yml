@@ -1,0 +1,55 @@
+version: '3.9'
+
+services:
+  frontend:
+    container_name: frontend
+    image: dockerimagefront
+    build:
+      context: ./frontend
+      dockerfile: dockerfile
+    ports:
+      - 4000:4000
+    environment:
+      - FRONT_BASE_URL=__frontBaseUrl__
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - haeliseu_network
+      
+  backend:
+    container_name: backend
+    image: dockerimageback
+    build:
+      context: ./backend
+      dockerfile: dockerfile
+    ports:
+      - 3000:3000
+    restart: always
+    depends_on:
+      - database
+    networks:
+      - haeliseu_network
+
+  database:
+    container_name: database
+    image: postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      PGDATA: /data/postgres
+    volumes: 
+      - db-webserver:/data/postgres
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    networks:
+      - haeliseu_network
+
+volumes:
+  db-webserver:
+
+networks:
+  haeliseu_network:
+    external: true

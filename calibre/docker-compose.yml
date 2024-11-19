@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+  calibre-web:
+    image: lscr.io/linuxserver/calibre-web:latest
+    container_name: calibre
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - DOCKER_MODS=linuxserver/mods:universal-calibre #optional
+      - OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
+    volumes:
+      - /path/to/data:/config
+      - /path/to/calibre/library:/books
+    ports:
+      - 8083:8083
+    restart: unless-stopped
+    networks:
+      - haeliseu_network
+
+  calibre:
+    image: lscr.io/linuxserver/calibre:latest
+    container_name: calibre-serv
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /path/to/data:/config
+      - /path/to/calibre/library:/library
+    ports:
+      - 8084:8080
+      - 8181:8181
+      - 8081:8081
+    restart: unless-stopped
+
+
+networks:
+  haeliseu_network:
+    external: true

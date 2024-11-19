@@ -1,0 +1,15 @@
+version: '2.1'
+services:
+  duckdns:
+    image: lscr.io/linuxserver/duckdns
+    container_name: duckdns
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=Europe/Paris
+      - SUBDOMAINS=haeliseuadguard.duckdns.org,haeliseu.duckdns.org
+      - TOKEN=77e50177-5647-4b0a-a84f-fa66f62f1c45
+      - LOG_FILE=false
+    volumes:
+      - /docker/duckdns/config:/config
+    restart: unless-stopped
