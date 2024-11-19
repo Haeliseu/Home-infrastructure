@@ -99,13 +99,6 @@ coverage/
 test-results/
 .junit-reports/
 
-# =====================
-# Package Manager Lock Files
-# =====================
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-
 keys.json
 *.sqlite
 
