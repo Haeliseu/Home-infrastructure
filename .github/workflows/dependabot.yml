@@ -1,0 +1,59 @@
+# Basic `dependabot.yml` file with
+# minimum configuration for two package managers
+
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/WebServer/frontend"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "npm"
+    directory: "/WebServer/backend"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "/WebServer/backend"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "/WebServer/frontend"
+    schedule:
+      interval: "daily"
+  
+  - package-ecosystem: "docker"
+    directory: "/Adguardhome"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "/Calibre"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "/Duckdns"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "/NginxProxyManager"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "/Photoprism"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "/Plex"
+    schedule:
+      interval: "daily"
+      
+  - package-ecosystem: "docker"
+    directory: "/Portainer"
+    schedule:
+      interval: "daily"
