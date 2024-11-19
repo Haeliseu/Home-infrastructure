@@ -7,20 +7,22 @@ updates:
     directory: "/WebServer/frontend"
     schedule:
       interval: "daily"
-
+    target-branch: "develop"
+    
   - package-ecosystem: "npm"
     directory: "/WebServer/backend"
     schedule:
       interval: "daily"
+    target-branch: "develop"
 
   - package-ecosystem: "docker"
     directory: "/WebServer/backend"
     schedule:
       interval: "daily"
+    target-branch: "develop"
 
   - package-ecosystem: "docker"
     directory: "/WebServer/frontend"
     schedule:
       interval: "daily"
-
-target-branch: "develop"
+    target-branch: "develop"
