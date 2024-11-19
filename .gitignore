@@ -18,10 +18,10 @@ yarn-error.log*
 # Dependency Directories
 # =====================
 node_modules/
-target/        # Maven or Gradle build output
-build/         # JavaScript or Java build output
-dist/          # Parcel and other build output
-out/           # General output folder
+target/        # Maven ou Gradle
+build/
+dist/
+out/
 
 # =====================
 # Parcel Cache
@@ -33,19 +33,22 @@ out/           # General output folder
 # Environment Variables
 # =====================
 .env
-.env.local
-.env.*.local
+.env.*
 .env.docker
 
 # =====================
 # IDE-Specific Files
 # =====================
 .idea/
-*.iml
 .vscode/
+*.iml
+
+# =====================
+# Java Build Artifacts
+# =====================
 *.class
-*.war
 *.jar
+*.war
 *.project
 *.settings/
 *.classpath
@@ -69,7 +72,7 @@ Thumbs.db
 # =====================
 # Docker-Related Files
 # =====================
-docker-compose.override.yml  # Exclude environment-specific overrides
+docker-compose.override.yml
 .dockerignore
 
 # =====================
