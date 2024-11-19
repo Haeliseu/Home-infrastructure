@@ -1,0 +1,71 @@
+name: Build and Test Application
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '23'
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            backend/node_modules
+            frontend/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install backend dependencies
+        run: |
+          cd WebServer/backend
+          npm ci
+
+      - name: Build backend
+        run: |
+          cd WebServer/backend
+          npm run build
+
+      #- name: Test backend
+      #  run: |
+      #    cd backend
+      #    npm test
+
+      - name: Install frontend dependencies
+        run: |
+          cd WebServer/frontend
+          npm ci
+
+      - name: Build frontend
+        run: |
+          cd WebServer/frontend
+          npm run build
+
+      #- name: Test frontend
+      #  run: |
+      #    cd frontend
+      #    npm test
+
+      - name: Upload backend build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: backend-build
+          path: backend/build/
+
+      - name: Upload frontend build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: frontend-build
+          path: frontend/build/
