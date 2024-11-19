@@ -105,3 +105,8 @@ test-results/
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+keys.json
+*.sqlite
+
+Photoprism/storage/

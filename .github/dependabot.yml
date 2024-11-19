@@ -22,38 +22,5 @@ updates:
     directory: "/WebServer/frontend"
     schedule:
       interval: "daily"
-  
-  - package-ecosystem: "docker"
-    directory: "/Adguardhome"
-    schedule:
-      interval: "daily"
 
-  - package-ecosystem: "docker"
-    directory: "/Calibre"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: "docker"
-    directory: "/Duckdns"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: "docker"
-    directory: "/NginxProxyManager"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: "docker"
-    directory: "/Photoprism"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: "docker"
-    directory: "/Plex"
-    schedule:
-      interval: "daily"
-      
-  - package-ecosystem: "docker"
-    directory: "/Portainer"
-    schedule:
-      interval: "daily"
+target-branch: "develop"
