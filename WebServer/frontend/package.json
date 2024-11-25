@@ -32,7 +32,7 @@
     ]
   },
   "devDependencies": {
-    "@parcel/config-default": "^2.13.0",
+    "@parcel/config-default": "^2.13.1",
     "@parcel/packager-raw-url": "^2.13.0",
     "@parcel/transformer-sass": "^2.13.0",
     "@parcel/transformer-webmanifest": "^2.13.0",
