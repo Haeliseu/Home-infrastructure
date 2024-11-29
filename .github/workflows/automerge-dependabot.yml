@@ -7,15 +7,19 @@ on:
       - synchronize
       - reopened
 
+permissions:
+  pull-requests: write  # Permet de modifier (fusionner) les PRs
+
 jobs:
   automerge:
-    if: github.actor == 'dependabot[bot]'
+    if: github.actor == 'dependabot[bot]'  # S'assure que l'auto-merge ne concerne que Dependabot
     runs-on: ubuntu-latest
+
     steps:
       - name: Vérifier les conditions d'automerge
         uses: pascalgn/automerge-action@v0.16.4
         with:
           github_token: "${{ secrets.GITHUB_TOKEN }}"
-          merge_method: "merge"
-          # Optionnel : définir des labels spécifiques
+          merge_method: "merge"  # Méthode de fusion (merge, squash, rebase)
+          # Optionnel : vous pouvez définir un label spécifique pour le merge
           # label: "automerge"
