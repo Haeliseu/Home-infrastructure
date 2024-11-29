@@ -1,24 +1,21 @@
-name: Automerge Dependabot PRs
-
-on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
+name: Dependabot auto-approve
+on: pull_request
 
 permissions:
-  pull-requests: write  # Permet de modifier (fusionner) les PRs
+  pull-requests: write
 
 jobs:
-  automerge:
-    if: github.actor == 'dependabot[bot]'  # S'assure que l'auto-merge ne concerne que Dependabot
+  dependabot:
     runs-on: ubuntu-latest
-
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'haeliseu/Home-infrastructure'
     steps:
-      - name: Vérifier les conditions d'automerge
-        uses: pascalgn/automerge-action@v0.16.4
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # Utilise le secret GitHub Token
-          # Pour définir la méthode de merge (merge, squash, rebase), il faut définir merge_method dans les entrées spécifiques de l'action
-          merge_method: 'merge'  # Spécifie la méthode de fusion
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Approve a PR
+        run: gh pr review --approve "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
