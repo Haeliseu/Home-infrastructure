@@ -19,7 +19,6 @@ jobs:
       - name: Vérifier les conditions d'automerge
         uses: pascalgn/automerge-action@v0.16.4
         with:
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
-          merge_method: "merge"  # Méthode de fusion (merge, squash, rebase)
-          # Optionnel : vous pouvez définir un label spécifique pour le merge
-          # label: "automerge"
+          token: ${{ secrets.GITHUB_TOKEN }}  # Utilise le secret GitHub Token
+          # Pour définir la méthode de merge (merge, squash, rebase), il faut définir merge_method dans les entrées spécifiques de l'action
+          merge_method: 'merge'  # Spécifie la méthode de fusion
