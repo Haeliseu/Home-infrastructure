@@ -1,23 +1,31 @@
-name: Dependabot auto-approve
-on: pull_request
-
-env:
-    PR_URL: ${{github.event.pull_request.html_url}}
-    GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-permissions:
-  pull-requests: write
-
+name: automerge
+on:
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
+  pull_request_review:
+    types:
+      - submitted
+  check_suite:
+    types:
+      - completed
+  status: {}
 jobs:
-  dependabot:
+  automerge:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'haeliseu/Home-infrastructure'
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
-      - name: Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d
-        with:
-          github-token: "$GH_TOKEN"
-      - name: Approve a PR
-        run: gh pr review --approve "$PR_URL"
-      
+      - id: automerge
+        name: automerge
+        uses: "pascalgn/automerge-action@v0.16.4"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
