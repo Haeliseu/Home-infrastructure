@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@parcel/config-default": "^2.13.1",
-    "@parcel/packager-raw-url": "^2.13.2",
+    "@parcel/packager-raw-url": "^2.13.3",
     "@parcel/transformer-sass": "^2.13.2",
     "@parcel/transformer-webmanifest": "^2.13.2",
     "@testing-library/jest-dom": "^6.6.3",
