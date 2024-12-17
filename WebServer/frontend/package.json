@@ -40,6 +40,6 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "eslint-config-react-app": "^7.0.1",
-    "parcel": "^2.13.2"
+    "parcel": "^2.13.3"
   }
 }
